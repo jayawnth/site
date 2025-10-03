@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" type="image/png" href="logaa.png">
+   <title>Talari Technologies</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            transition: background-color 0.5s, color 0.5s;
+            overflow-x: hidden;
+        }
+
+        /* Default dark mode styles */
+        body.dark-mode {
+            background-color: #121212;
+            color: #fff;
+        }
+
+        /* Light mode styles */
+        body.light-mode {
+            background-color: #ffffff;
+            color: #121212;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background: rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 3;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            width: 60px;
+            height: 60px;
+            margin-right: 10px;
+        }
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 40px;
+            margin-left: auto;
+            align-items: center;
+        }
+        .navbar ul li {
+            display: inline;
+            position: relative;
+        }
+        .navbar ul li a {
+            text-decoration: none;
+            color: #5bb450;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
+        }
+        .navbar ul li a:hover {
+            color: #ff4500;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: rgba(0, 0, 0, 0.9);
+            min-width: 160px;
+            z-index: 10;
+            border-radius: 5px;
+            text-align: left; 
+            left: 0;
+        }
+        .dropdown-content a {
+            display: block;
+            padding: 10px;
+            color: white;
+             text-align: left;
+        }
+        .dropdown-content a:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .faq-button {
+            background: green;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            transition: background 0.3s ease-in-out;
+        }
+        /*.faq-button:hover {
+            background: #8bca84;!-->
+        }*/
+        .theme-toggle {
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 20px;
+            padding: 8px 12px;
+            border-radius: 20px;
+            transition: background 0.3s ease-in-out;
+            color: white;
+        }
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .menu-icon {
+            font-size: 24px;
+            cursor: pointer;
+            display: none;
+        }
+
+.menu-icon {
+    color: green !important;
+}
+        .navbar ul li button.theme-toggle {
+    background: transparent;
+    color: white;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.mobile-break {
+  display: inline;
+}
+
+@media (max-width: 600px) {
+  .mobile-break {
+    display: block;
+  }
+}
+
+
+.services-list {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.services-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.services-list li {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+
+
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 50px;
+            padding: 50px 20px;
+            perspective: 1000px;
+        }
+        .section {
+            width: 80%;
+            max-width: 800px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            text-align: center;
+           
+            transition: transform 0.5s ease-in-out, box-shadow 0.5s;
+        }
+        
+        
+        .dark-mode {
+            background-color: #121212;
+            color: #fff;
+        }
+        .dark-mode .section {
+            background: rgba(50, 50, 50, 0.9);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+        }
+        .dark-mode .section:hover {
+            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
+        }
+        @media (max-width: 768px) {
+            .navbar ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                background: rgba(0, 0, 0, 0.9);
+                padding: 10px;
+                width: 180px;
+                text-align: right;
+                border-radius: 10px;
+                z-index: 1000;
+            }
+            .navbar ul.show {
+                display: flex;
+            }
+            .menu-icon {
+                display: block;
+                color: white;
+            }
+        }
+        
+                /* Blinking stars effect */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0;
+            animation: blink 3s infinite;
+        }
+        @keyframes blink {
+            0%, 100% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+    /* Earth at the Bottom */
+    .earth {
+      position: fixed;
+      bottom: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 450px;
+      height: auto;
+      opacity: 0.8;
+    }
+
+.left-image {
+    width: 130px; /* Adjust size */
+    height: auto;
+    margin-left: 0; /* Reset margin */
+    flex-shrink: 0; /* Prevent shrinking */
+    position: relative; /* Ensure proper positioning */
+}
+
+        .text-containers h2 {
+            color: #45a049;
+            font-size: 28px;
+            margin-bottom: 15px;
+	    text-align: center;
+        }
+
+.containers {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px;
+    background: transparent;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Image Containers */
+.image-containers img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Text Containers */
+.text-containers {
+    max-width: 60%;
+}
+
+/* Heading Styles */
+.text-containers h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+    text-align: center;
+    color: #45a049; /* Default green color for light mode */
+}
+
+/* Paragraph Text */
+.text-containers p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #000; /* Default black text color for light mode */
+}
+
+/* Light Mode */
+.light-mode .text-containers h2 {
+    color: #45a049; /* Green color for headings in light mode */
+}
+
+.light-mode .text-containers p {
+    color: #000; /* Black color for paragraph text in light mode */
+}
+
+/* Dark Mode */
+.dark-mode .text-containers h2 {
+    color: #45a049; /* White color for headings in dark mode */
+}
+
+.dark-mode .text-containers p {
+    color: #f5f5f5; /* Light gray color for paragraph text in dark mode */
+}
+
+@media (max-width: 768px) {
+    .containers {
+        flex-direction: column;   /* Stack items vertically */
+        text-align: center;       /* Center-align heading */
+        padding: 20px 15px;       /* Reduce padding */
+        gap: 15px;                /* Control spacing between children */
+    }
+
+    .image-containers {
+        margin: 0;                /* Reset margins */
+    }
+
+    .image-containers img {
+        width: 100%;              /* Full width on mobile */
+        height: auto;             /* Keep proportions */
+        border-radius: 10px;
+    }
+
+    .text-containers {
+        max-width: 100%;
+        text-align: left;         /* Better readability for paragraphs */
+    }
+
+    .text-containers h2 {
+        font-size: 32px;          /* Slightly smaller heading */
+        margin: 10px 0;           /* Reduce top/bottom margins */
+    }
+
+    .text-containers p {
+        font-size: 18px;
+        line-height: 1.5;
+        margin: 0;                /* Remove default paragraph margins */
+    }
+}
+
+.button-container {
+    display: flex;
+    flex-wrap: wrap; /* Wrap buttons if they exceed width */
+    gap: 10px; /* Space between buttons */
+    justify-content: center; /* Center align buttons */
+    margin-top: 10px; /* Add space above buttons */
+}
+
+/* Button Styling */
+.btn {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Space between icon and text */
+    background-color: #4CAF50; /* Green */
+    color: white;
+    padding: 8px 12px;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 5px;
+    font-weight: bold;
+    border: 2px solid transparent;
+    transition: 0.3s;
+}
+
+/* Button Hover Effect */
+.btn:hover {
+    background-color: #45a049;
+    border-color: white;
+}
+
+.left-image {
+    width: 130px; /* Adjust size */
+    height: auto;
+    margin-left: 0; /* Reset margin */
+    flex-shrink: 0; /* Prevent shrinking */
+    position: relative; /* Ensure proper positioning */
+}
+
+/* Mobile view fix */
+@media (max-width: 768px) {
+    .left-image {
+        width: 80px; /* Adjust for smaller screens */
+        display: block;
+        margin: 0 auto 10px auto; /* Center image on mobile */
+    }
+}
+
+.text-content {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+        /* Background Grid */
+  .background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 40px;
+  padding: 30px;
+  opacity: 0.15;
+  z-index: 0; /* keep this LOW */
+  pointer-events: none; /* allows clicks to pass through */
+}
+
+        .background img {
+            width: 60px;
+            height: 60px;
+            justify-self: center;
+            align-self: center;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .background img:hover {
+            transform: scale(1.1);
+        }
+
+        
+
+        /* Foreground Content */
+        .content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px); /* Glass effect */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .background {
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: repeat(4, 1fr);
+                gap: 20px;
+            }
+
+            .background img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+
+    @media (max-width: 768px) {
+        footer div {
+            text-align: center;
+        }
+        footer div div {
+            flex: 100%;
+            margin-bottom: 20px;
+        }
+        input, button {
+            width: 50%;
+        }
+    }
+
+/* ✅ Mobile View */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-section {
+        text-align: center;
+        width: 100%;
+    }
+
+    .footer-section input,
+    .footer-section button {
+        width: 95%;
+    }
+}
+
+/* General Footer Styles */
+footer {
+    background: linear-gradient(135deg, rgba(44, 62, 80, 0.4), rgba(26, 37, 47, 0.8));
+    color: white;
+    padding: 50px 20px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Footer Container */
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 1400px;
+    margin: auto;
+    text-align: left;
+    height: 30vh; /* Full viewport height */
+    bottom: 0;
+
+}
+
+/* Footer Sections */
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 20px;
+}
+
+/* Company Logo */
+.footer-section img {
+    max-width: 180px;
+    filter: brightness(1.2);
+}
+
+/* Paragraphs */
+.footer-section p {
+    margin-top: 15px;
+    line-height: 1.6;
+}
+
+/* Social Media Icons */
+.social-icons a {
+    color: white;
+    font-size: 24px;
+    margin-right: 15px;
+    transition: 0.3s;
+}
+
+.social-icons a:hover {
+    color: #7d4cdb;
+}
+
+    /* 🌗 Theme Tip Box */
+    #themeTipBox {
+      position: fixed;
+      top: 80px;
+      right: 10px;
+      background: #007bff;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      font-size: 13px;
+      z-index: 10000;
+      animation: bounce 1s infinite alternate;
+    }
+
+    #themeTipBox .arrow-down {
+      position: absolute;
+      top: -10px;
+      right: 57px;
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 8px solid transparent;
+      border-bottom: 10px solid #007bff;
+    }
+
+    @media (max-width: 768px) {
+  #themeTipBox {
+    top: 70px;
+    right: 2%;
+    transform: translateX(50%);
+    font-size: 12px;
+    padding: 8px 12px;
+    max-width: 200px;
+    text-align: center;
+  }
+
+  #themeTipBox .arrow-down {
+    right: 30%;
+    transform: translateX(50%);
+  }
+}
+
+
+    @keyframes bounce {
+      from {
+        transform: translateY(0px);
+      }
+      to {
+        transform: translateY(5px);
+      }
+
+      
+
+    }
+
+
+    </style>
+</head>
+
+  <!-- 🌗 Theme Tip Box -->
+  <div id="themeTipBox">
+    ☀️ Click here to change theme
+    <div class="arrow-down"></div>
+  </div>
+
+<body class="dark-mode">
+    <nav class="navbar"> 
+        <div class="logo">
+            <img src="loga.png" alt="Logo">
+            <strong>Talari Technologies</strong>
+        </div>
+<ul id="nav-menu">
+  <li><a href="home.html">Home</a></li>
+  <li class="dropdown">
+    <a href="#">Service ▾</a>
+    <div class="dropdown-content">
+      <a href="webdesign.html">Website Designing</a>
+      <a href="webdevelopment.html">Website Development</a>
+      <a href="3d.html">3D Website Designing</a>
+      <a href="app.html">App Development</a>
+      <a href="software.html">Softwares</a>
+      <a href="workshop.html">Work Shops</a>
+      <a href="services.html">Customer Support Services</a>
+      <a href="studentprj.html">Students Projects</a>
+    </div>
+  </li>
+  <li><a href="about.html">About</a></li>
+  <li><a href="#">Contact</a></li>
+  <li><a href="#faq" class="faq-button">JOB</a></li>
+  <li><button class="theme-toggle" id="theme-toggle">☀️</button></li>
+</ul>
+<div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+    </nav>
+
+ <img src="earth.png" class="earth" alt="Earth"> <!- Earth Image -->
+
+    <!-- Home Section -->
+<div class="stars" id="stars"></div> <!-- Star container -->
+
+
+    <div class="background">
+        <img src="https://cdn-icons-png.flaticon.com/128/7075/7075369.png" alt="UI Design">
+	<img src="https://cdn-icons-png.flaticon.com/128/11333/11333010.png" alt="API Laptop">
+        <img src="https://cdn-icons-png.flaticon.com/128/7075/7075373.png" alt="Mobile Development">
+    	<img src="https://cdn-icons-png.flaticon.com/128/1344/1344940.png" alt="Graduation Hat">
+    	<img src="https://cdn-icons-png.flaticon.com/128/2257/2257307.png" alt="Graph">
+    	<img src="https://cdn-icons-png.flaticon.com/128/2165/2165061.png" alt="Email Icon">
+    	<img src="https://cdn-icons-png.flaticon.com/128/3446/3446795.png" alt="Chart">
+    	<img src="https://cdn-icons-png.flaticon.com/128/3330/3330300.png" alt="Books">
+        <img src="https://cdn-icons-png.flaticon.com/128/2989/2989987.png" alt="Chat Icon">
+        <img src="https://cdn-icons-png.flaticon.com/128/2076/2076218.png" alt="Bubble Chat">
+        <img src="https://cdn-icons-png.flaticon.com/128/1933/1933005.png" alt="Paper Plane">
+        <img src="https://cdn-icons-png.flaticon.com/128/4795/4795897.png" alt="Profile">
+    	<img src="https://cdn-icons-png.flaticon.com/128/1693/1693746.png" alt="AI Icon">
+        <img src="https://cdn-icons-png.flaticon.com/128/1087/1087927.png" alt="Project Management">
+    	<img src="https://cdn-icons-png.flaticon.com/128/900/900961.png" alt="Artificial Intelligence">
+
+    </div>
+<div class="containers">
+        <div class="image-containers">
+            <img src="team.png" alt="Creative Collaboration">
+        </div>
+        <div class="text-containers">
+            <h2>Welcome to <span class="mobile-break">Talari Technologies</span></h2>
+      <p>
+    At Talari Technologies, we specialize in turning your digital ideas into real, working solutions. We're an IT startup passionate about helping <strong>Startups</strong>, <strong>Small Businesses</strong>, and <strong>Students</strong> build a strong online presence through reliable, custom, and affordable digital services  — All under one roof, we offer budget-friendly pricing, greater flexibility, and better performance to ensure the best value for your project.
+  </p>
+ 
+<br>
+
+  <p>At Talari Technologies, we not only provide software solutions but also support students in their learning journey. We conduct interactive workshops that give hands-on knowledge and award each participant a verified certificate with a unique registration ID. Along with training, we also help students with their academic projects by offering ready-made projects as well as step-by-step guidance to develop their own. Our aim is to make learning practical, simple, and impactful, ensuring students gain the skills and confidence needed for future success.</p>
+        </div>
+    </div>
+    </div>
+
+  <div class="container">
+    <div class="section">
+      <h2>Welcome to Creative World</h2>
+      <p>Come lets make your world degital.</p>
+      <p>We will service u with good and more flesable projectes.</p>
+    </div>
+    <div class="section">
+    <h2>Our Services</h2>
+    <p>Give Life to Your Idea – Go Digital with Us</p>
+
+    <div class="button-container">
+        <a href="#" class="btn">Web Design</a>
+        <a href="#" class="btn">3D Web Pages</a>
+        <a href="#" class="btn">Develops</a>
+        <a href="#" class="btn">Workshops</a>
+        <a href="#" class="btn">Projects</a>
+        <a href="#" class="btn">App</a>
+    </div>
+</div>
+
+
+
+
+<div class="section">
+    <img src="graph.png" alt="Icon" class="left-image">
+    <div class="text-content">
+        <h2>Let's work together</h2>
+	<p>Come lets grow growtogether.</p>
+        <p>Smart team that transform your ideas into reality.</p>
+    </div>
+</div>
+
+
+ 
+    <div class="containers">
+        <div class="text-containers">
+            <h2>Our Team</h2>
+             <p>
+    Talari Technologies is a government-recognized MSME software firm that builds custom tools, websites, and automation systems for real-world needs and According to the clients requirements
+  </p>
+            <p>At our core, we aim to provide valuable insights and solutions consistently, fostering trust and building enduring relationships. By understanding our clients' evolving needs, we deliver content that informs, excites, and enriches their experience. Our proactive approach ensures we're always working towards greater satisfaction and success together. And we mainly focus on customers sadisfacation</p>
+            <p>We help peoples by providing the services like :</p>
+    <div class="services-list">
+     <b> <ul>
+        <li>🖥️ Web Development</li>
+        <li>🎨 Web Designing</li>
+        <li>📱 App Development</li>
+        <li>💻 Software Solutions</li>
+        <li>🧑‍💻 Call & Mail Process Support</li>
+        <li>🎓 Student Project Assistance</li>
+        <li>🧾 Certificate & ID Generation</li>
+        <li>👨‍🏫 Workshops & Training Tools</li>
+      </ul></b>
+    </div>
+        </div>
+        <div class="image-containers">
+            <img src="team.png" alt="Creative Collaboration">
+        </div>
+    </div>
+
+<footer style="background: linear-gradient(135deg, rgba(44, 62, 80, 0.4), rgba(26, 37, 47, 0.8)); color: white; padding: 50px 20px; text-align: center; font-family: 'Poppins', sans-serif;">
+  <div style="display: flex; flex-wrap: wrap; justify-content: space-between; max-width: 1400px; margin: auto;">
+
+    <!-- Find Us -->
+    <div style="flex: 1; min-width: 200px; text-align: center;">
+      <h3 style="border-bottom: 3px solid #7d4cdb; display: inline-block; padding-bottom: 8px; color: green">Find Us</h3>
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.5408369905434!2d-122.42122028468284!3d37.77927677975865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c001d85e3%3A0xdeb539f3b41890d2!2sTwitter%20HQ!5e0!3m2!1sen!2sus!4v1615044024743!5m2!1sen!2sus" 
+        width="100%" 
+        height="150" 
+        style="border:0; border-radius: 8px; margin-top: 10px;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+    <!-- Useful Links -->
+    <div style="flex: 1; min-width: 200px; text-align: center;">
+      <h3 style="border-bottom: 3px solid #7d4cdb; display: inline-block; padding-bottom: 8px; color: green">Useful Links</h3>
+      <ul style="list-style: none; padding: 0; margin-top: 15px;">
+        <li><a href="https://onecompiler.com/html/43dwtxgrf" target="_blank" style="color: white; text-decoration: none; display: block; margin-bottom: 8px;">Website Design</a></li>
+        <li><a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px;">Advertising</a></li>
+        <li><a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px;">About Us</a></li>
+        <li><a href="#" style="color: white; text-decoration: none; display: block;">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <!-- Let's Work Together -->
+    <div style="flex: 1; min-width: 200px; text-align: center;">
+      <h3 style="border-bottom: 3px solid #7d4cdb; display: inline-block; padding-bottom: 8px; color: green;">Let's Work Together</h3>
+      <p style="margin-top: 10px;">Looking to start your project? Let's turn your idea into reality.</p>
+      <a 
+        href="https://onecompiler.com/html" 
+        target="_blank" 
+        style="display: inline-block; margin-top: 10px; padding: 10px 20px; background-color: #7d4cdb; color: white; border-radius: 8px; text-decoration: none;">
+        Contact Us
+      </a>
+    </div>
+
+  </div>
+
+  <div style="margin-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.2); padding-top: 20px;">
+    <p>&copy; Digiworld Pvt Ltd. All Rights Reserved.</p>
+  </div>
+</footer>
+
+
+
+
+
+    <script>
+        function toggleMenu() {
+            document.getElementById("nav-menu").classList.toggle("show");
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            let themeToggleButton = document.getElementById("theme-toggle");
+
+            function updateIcon() {
+                themeToggleButton.textContent = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
+            }
+
+            themeToggleButton.addEventListener("click", function () {
+                document.body.classList.toggle("dark-mode");
+                document.body.classList.toggle("light-mode");
+                localStorage.setItem("theme", document.body.classList.contains("dark-mode") ? "dark" : "light");
+                updateIcon();
+            });
+
+            if (localStorage.getItem("theme") === "light") {
+                document.body.classList.remove("dark-mode");
+                document.body.classList.add("light-mode");
+            }
+
+            updateIcon();
+
+// Create random stars that blink
+function createStars() {
+    const starsContainer = document.getElementById("stars");
+    starsContainer.innerHTML = ''; // Clear existing stars
+
+    for (let i = 0; i < 100; i++) { // Adjust the number of stars
+        let star = document.createElement("div");
+        star.classList.add("star");
+
+        let randomX = Math.random() * window.innerWidth;
+        let randomY = Math.random() * window.innerHeight;
+        let randomDelay = Math.random() * 3;
+
+        star.style.left = `${randomX}px`;
+        star.style.top = `${randomY}px`;
+        star.style.animationDelay = `${randomDelay}s`;
+
+        starsContainer.appendChild(star);
+    }
+}
+
+// Run the function once the page loads
+window.onload = createStars;
+
+// Update stars when the window resizes
+window.addEventListener("resize", createStars);
+
+
+        });
+
+    // Automatically remove the tooltip after 7 seconds
+    setTimeout(() => {
+      const tip = document.getElementById("themeTipBox");
+      if (tip) tip.remove();
+    }, 7000);
+
+    // Dummy theme toggle
+    function toggleTheme() {
+      alert("Theme changed! (You can replace this with real theme logic.)");
+    }
+    // Automatically remove the tooltip after 7 seconds
+    setTimeout(() => {
+      const tip = document.getElementById("themeTipBox");
+      if (tip) tip.remove();
+    }, 5000);
+
+    // Dummy theme toggle
+    function toggleTheme() {
+      alert("Theme changed! (You can replace this with real theme logic.)");
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Careers | Job Openings</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* --- Global --- */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f0f4fa;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(135deg,#1a73e8,#4cafef);
+      color: #fff;
+      text-align: center;
+      padding: 60px 20px;
+      border-bottom-left-radius: 50px;
+      border-bottom-right-radius: 50px;
+    }
+    header h1 { font-size: 2.8rem; margin:0;}
+    header p { margin:10px 0 0; font-size:1.2rem;}
+
+    /* --- Filter Pills --- */
+    .filters {
+      text-align: center;
+      margin: 30px 0 0;
+    }
+    .filters button {
+      border: none;
+      background: #e0e7ff;
+      color: #1a73e8;
+      padding: 8px 16px;
+      margin: 5px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+    .filters button.active, .filters button:hover {
+      background: #1a73e8;
+      color: #fff;
+    }
+
+    /* --- Badges --- */
+    .badges {
+      margin: 10px 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .badge {
+      display: inline-block;
+      background: #e0e7ff;
+      color: #1a73e8;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    /* --- Job Section --- */
+    .job-section {
+      max-width: 1400px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+    .job-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    /* --- Job Card --- */
+    .job-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 25px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .job-card::before {
+      content: "";
+      position: absolute;
+      top: -50px; left: -50px;
+      width: 150px; height: 150px;
+      background: rgba(26,115,232,0.1);
+      border-radius: 50%;
+      z-index: 0;
+    }
+    .job-card h3 {
+      margin: 0 0 10px;
+      color: #1a73e8;
+      position: relative;
+      z-index: 1;
+    }
+    .job-card p, .job-card .meta {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      position: relative;
+      z-index: 1;
+    }
+    .job-card button {
+      margin-top: 15px;
+      background: #1a73e8;
+      color: #fff;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+      position: relative;
+      z-index: 1;
+    }
+    .job-card button:hover {
+      background: #155ab6;
+    }
+    .job-card:hover {
+      transform: translateY(-8px);
+    }
+
+    /* --- Modal --- */
+    .modal { display:none; position:fixed; top:0; left:0; right:0; bottom:0;
+      background: rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:999;
+    }
+    .modal-content {
+      background:#fff; padding:25px; border-radius:16px; width:90%; max-width:500px;
+      position:relative; animation: fadeIn 0.3s ease;
+    }
+    .modal-content h2 { margin-top:0; color:#1a73e8; text-align:center;}
+    .close-btn { position:absolute; top:12px; right:12px; font-size:20px; cursor:pointer; color:#333; }
+
+    form input, form select, form textarea {
+      width:95%; margin:8px 0; padding:12px; border:1px solid #ddd; border-radius:8px; font-size:0.95rem;
+    }
+    form input[type="file"] { border:none; padding:6px 0; }
+    form button {
+      background: linear-gradient(90deg,#1a73e8,#4cafef);
+      color:#fff; border:none; padding:12px 20px; border-radius:8px; cursor:pointer;
+      font-weight:500; margin-top:10px;
+    }
+    form button:hover { background: linear-gradient(90deg,#155ab6,#3573d6);}
+    .error-message { color:red; font-size:0.85rem; margin-top:4px; display:none;}
+
+    /* --- Footer --- */
+    footer { background:#1a73e8; color:#fff; text-align:center; padding:20px;
+      margin-top:60px; border-top-left-radius:40px; border-top-right-radius:40px;
+    }
+.form-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* spacing between button and error */
+  margin-top: 10px;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  display: none; /* hidden until error */
+}
+
+    @keyframes fadeIn { from {opacity:0; transform:scale(0.9);} to {opacity:1; transform:scale(1);} }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🚀 Join Our Team</h1>
+  <p>We’re hiring! Explore exciting career opportunities in IT & Non-IT sectors</p>
+</header>
+
+<!-- Filters -->
+<div class="filters">
+  <button class="active" onclick="filterJobs('All', this)">All</button>
+  <button onclick="filterJobs('IT', this)">IT</button>
+  <button onclick="filterJobs('Non-IT', this)">Non-IT</button>
+</div>
+
+<!-- Job Cards -->
+<section class="job-section" id="jobsContainer">
+  <div class="job-grid">
+    <!-- IT Jobs -->
+    <div class="job-card" data-category="IT">
+      <h3>💻 Frontend Developer</h3>
+      <p>Build user-friendly, responsive interfaces with HTML, CSS, JS.</p>
+      <p class="meta">Location: Remote | Experience: 1–5 yrs</p>
+      <div class="badges">
+        <span class="badge">HTML</span>
+        <span class="badge">CSS</span>
+        <span class="badge">JavaScript</span>
+      </div>
+      <button onclick="openModal('Frontend Developer')">Apply Now</button>
+    </div>
+
+    <div class="job-card" data-category="IT">
+      <h3>💻 Backend Developer</h3>
+      <p>Create robust APIs and databases using Node.js, Python, or Java.</p>
+      <p class="meta">Location: Remote | Experience: 2–5 yrs</p>
+      <div class="badges">
+        <span class="badge">Node.js</span>
+        <span class="badge">Python</span>
+        <span class="badge">Java</span>
+      </div>
+      <button onclick="openModal('Backend Developer')">Apply Now</button>
+    </div>
+
+    <div class="job-card" data-category="IT">
+      <h3>💻 App Developer</h3>
+      <p>Design & develop mobile applications for Android & iOS platforms.</p>
+      <p class="meta">Location: Remote | Experience: 2–4 yrs</p>
+      <div class="badges">
+        <span class="badge">Android</span>
+        <span class="badge">iOS</span>
+        <span class="badge">Flutter</span>
+      </div>
+      <button onclick="openModal('App Developer')">Apply Now</button>
+    </div>
+
+    <div class="job-card" data-category="IT">
+      <h3>💻 Software Developer</h3>
+      <p>Work on full-cycle software development, testing, and deployment.</p>
+      <p class="meta">Location: Remote | Experience: 2–5 yrs</p>
+      <div class="badges">
+        <span class="badge">C#</span>
+        <span class="badge">Java</span>
+        <span class="badge">Python</span>
+      </div>
+      <button onclick="openModal('Software Developer')">Apply Now</button>
+    </div>
+
+    <!-- Non-IT Jobs -->
+    <div class="job-card" data-category="Non-IT">
+      <h3>☎️ Call Process Executive</h3>
+      <p>Handle inbound/outbound calls, resolve queries, and provide customer support.</p>
+      <p class="meta">Location: Remote | Experience: 0–2 yrs</p>
+      <div class="badges">
+        <span class="badge">Communication Skills</span>
+        <span class="badge">Service Knowledge</span>
+      </div>
+      <button onclick="openModal('Call Process Executive')">Apply Now</button>
+    </div>
+
+    <div class="job-card" data-category="Non-IT">
+      <h3>📧 Mail Process Executive</h3>
+      <p>Respond to customer queries via email, maintain records, and provide support.</p>
+      <p class="meta">Location: Remote | Experience: 0–2 yrs</p>
+      <div class="badges">
+        <span class="badge">Email Support</span>
+        <span class="badge">Service Knowledge</span>
+      </div>
+      <button onclick="openModal('Mail Process Executive')">Apply Now</button>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal" id="applyModal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal()">&times;</span>
+    <h2 id="jobTitle">Apply Now</h2>
+    <form id="jobApplicationForm" enctype="multipart/form-data">
+      <input type="text" name="name" placeholder="Full Name" required>
+      <input type="email" name="email" placeholder="Email Address" required>
+<input type="text" name="phone" placeholder="Phone Number" 
+       maxlength="10" required
+       oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+      <select name="experience" required>
+        <option value="">Select Experience</option>
+        <option>0–1 yrs</option>
+        <option>1–3 yrs</option>
+        <option>3–5 yrs</option>
+        <option>5+ yrs</option>
+      </select>
+      <textarea name="message" rows="4" placeholder="Why should we hire you?" required></textarea>
+      <input type="file" name="resume" accept=".pdf,.doc,.docx" required>
+      <input type="hidden" name="job_position" id="job_position">
+<div class="form-actions">
+  <button type="submit">Submit Application</button>
+  <div class="error-message" id="formError"></div>
+</div>
+
+    </form>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2025 Your Company Name | Careers</p>
+</footer>
+
+<script>
+  // ✅ Filter jobs
+  function filterJobs(category, btn) {
+    document.querySelectorAll(".filters button").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    document.querySelectorAll(".job-card").forEach(card => {
+      card.style.display = (category === "All" || card.dataset.category === category) ? "block" : "none";
+    });
+  }
+
+  // ✅ Modal
+  const modal = document.getElementById("applyModal");
+  const jobTitle = document.getElementById("jobTitle");
+
+  function openModal(title) {
+    jobTitle.textContent = "Apply for " + title;
+    document.getElementById("job_position").value = title; // ✅ set hidden field
+    modal.style.display = "flex";
+  }
+
+  function closeModal() {
+    modal.style.display = "none";
+  }
+  window.onclick = function (e) {
+    if (e.target == modal) closeModal();
+  };
+
+  // ✅ Form submission with validation
+  const form = document.getElementById("jobApplicationForm");
+  const errorDiv = document.getElementById("formError");
+  const submitBtn = form.querySelector("button[type='submit']");
+
+  form.addEventListener("submit", async e => {
+    e.preventDefault();
+    errorDiv.style.display = "none";
+
+    const formData = new FormData(form);
+
+    // Validate text fields (except phone)
+    const requiredFields = ["name", "email", "experience", "message"];
+    for (let field of requiredFields) {
+      if (!form[field].value.trim()) {
+        errorDiv.textContent = "⚠️ Please fill in all fields correctly.";
+        errorDiv.style.display = "inline-block";
+        return;
+      }
+    }
+
+    // ✅ Validate phone number
+    const phone = form.phone.value.trim();
+    if (!/^\d{10}$/.test(phone)) {
+      errorDiv.textContent = "⚠️ Enter a valid 10-digit phone number.";
+      errorDiv.style.display = "inline-block";
+      return;
+    }
+
+    // ✅ Handle file upload (convert to base64)
+    const file = form.resume.files[0];
+    if (!file) {
+      errorDiv.textContent = "⚠️ Please upload your resume.";
+      errorDiv.style.display = "inline-block";
+      return;
+    }
+
+    submitBtn.disabled = true;
+    const oldText = submitBtn.textContent;
+    submitBtn.textContent = "Submitting...";
+
+    const reader = new FileReader();
+    reader.onload = async function (event) {
+      formData.set("resume", event.target.result); // ✅ Base64 string instead of raw file
+
+      try {
+        const scriptURL = "https://script.google.com/macros/s/AKfycbwVN3srBWOcn1FE19sxqPh0kIRRMidiQaI2gUan9mhIjsKq1PJZ_o01DwQpHSXGKA/exec";
+
+        let response = await fetch(scriptURL, {
+          method: "POST",
+          body: new URLSearchParams(formData) // send as urlencoded
+        });
+
+        if (!response.ok) throw new Error("Server error: " + response.status);
+
+        alert("✅ Application submitted successfully!");
+        form.reset();
+        closeModal();
+      } catch (err) {
+        errorDiv.textContent = "❌ Submission failed: " + err.message;
+        errorDiv.style.display = "inline-block";
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = oldText;
+      }
+    };
+
+    reader.readAsDataURL(file); // ✅ Convert file to Base64
+  });
+</script>
+
+
+
+
+
+</body>
+</html>

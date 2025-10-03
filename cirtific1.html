@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" type="image/png" href="logaa.png">
+   <title>Talari Technologies</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            transition: background-color 0.5s, color 0.5s;
+            overflow-x: hidden;
+        }
+
+        /* Default dark mode styles */
+        body.dark-mode {
+            background-color: #121212;
+            color: #fff;
+        }
+
+        /* Light mode styles */
+        body.light-mode {
+            background-color: #ffffff;
+            color: #121212;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background: rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 3;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            width: 60px;
+            height: 60px;
+            margin-right: 10px;
+        }
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin-left: auto;
+            align-items: center;
+        }
+        .navbar ul li {
+            display: inline;
+            position: relative;
+        }
+        .navbar ul li a {
+            text-decoration: none;
+            color: #5bb450;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
+        }
+        .navbar ul li a:hover {
+            color: #ff4500;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: rgba(0, 0, 0, 0.9);
+            min-width: 160px;
+            z-index: 10;
+            border-radius: 5px;
+            text-align: left; 
+            left: 0;
+        }
+        .dropdown-content a {
+            display: block;
+            padding: 10px;
+            color: white;
+            text-align: left; 
+        }
+        .dropdown-content a:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .faq-button {
+            background: green;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            transition: background 0.3s ease-in-out;
+        }
+        .faq-button:hover {
+            background: #8bca84;
+        }
+        .theme-toggle {
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 20px;
+            padding: 8px 12px;
+            border-radius: 20px;
+            transition: background 0.3s ease-in-out;
+            color: white;
+        }
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .menu-icon {
+            font-size: 24px;
+            cursor: pointer;
+            display: none;
+            color: green !important;
+        }
+
+
+    #inputSection {
+      margin: 20px 0;
+      text-align: center;
+      
+    }
+
+    #inputSection input {
+      padding: 10px;
+      font-size: 16px;
+      width: 220px;
+       border-radius: 10px;
+    
+    }
+
+    #verifyBtn {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: gold;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      color: #000;
+    }
+
+    #certificate {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      margin: 20px auto;
+      border: 2px solid #fff;
+      background-color: #fff;
+      display: none;
+    }
+
+    #certBackground {
+      width: 100%;
+      display: block;
+    }
+
+    .cert-field {
+      position: absolute;
+      color: #000;
+      text-align: center;
+      font-family: Georgia, serif;
+    }
+
+    #studentID {
+      bottom: 102px;
+      left: 320px;
+      font-size: 16px;
+      text-align: left;
+    }
+
+    #studentName {
+      top: 256px;
+      width: 100%;
+      font-size: 36px;
+      font-weight: bold;
+      left: 66px;
+    }
+
+    #studentCourse {
+      position: absolute;
+      top: 360px;
+      left: 60%;
+      transform: translateX(-50%);
+      width: max-content;
+      font-size: 30px;
+      text-align: center;
+    }
+
+    #studentDate {
+      top: 460px;
+      left: 100px;
+      width: 100%;
+      font-size: 20px;
+    }
+
+    #descriptionText {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #fff;
+      text-align: center;
+      display: none;
+      
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      background-color: #001f40;
+    }
+    .verify-button {
+      background-color: #007BFF;
+      color: white;
+      padding: 10px 22px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14x;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .verify-button:hover {
+      background-color: #0056b3;
+    }
+
+    #themeTipBox {
+      position: fixed;
+      top: 80px;
+      right: 10px;
+      background: #007bff;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      font-size: 13px;
+      z-index: 10000;
+      animation: bounce 1s infinite alternate;
+    }
+
+    #themeTipBox .arrow-down {
+      position: absolute;
+      top: -10px;
+      right: 57px;
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 8px solid transparent;
+      border-bottom: 10px solid #007bff;
+    }
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1; /* takes all space except footer */
+  position: relative;
+  z-index: 1;
+}
+
+footer {
+  position: relative;
+  z-index: 10;
+  background: #fff;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+}
+
+
+  .background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 40px;
+  padding: 30px;
+  opacity: 0.15;
+  z-index: 0; /* keep this LOW */
+  pointer-events: none; /* allows clicks to pass through */
+}
+
+.background img {
+  width: 60px;
+  height: 60px;
+  justify-self: center;
+  align-self: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.background img:hover {
+  transform: scale(1.1);
+}
+section {
+    
+ border-radius: 10px;
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 50px 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+section h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #5bb450; /* gold for highlight */
+}
+
+section p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+
+    /* Earth at the Bottom */
+    .earth {
+      position: fixed;
+      bottom: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 400px;
+      height: auto;
+      opacity: 0.8;
+    }
+
+            .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0;
+            animation: blink 3s infinite;
+        }
+        @keyframes blink {
+            0%, 100% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+    @media (max-width: 768px) {
+  #themeTipBox {
+    top: 70px;
+    right: 2%;
+    transform: translateX(50%);
+    font-size: 12px;
+    padding: 8px 12px;
+    max-width: 200px;
+    text-align: center;
+  }
+
+  #themeTipBox .arrow-down {
+    right: 30%;
+    transform: translateX(50%);
+  }
+
+        
+            .background {
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: repeat(4, 1fr);
+                gap: 20px;
+            }
+
+            .background img {
+                width: 40px;
+                height: 40px;
+            }
+        
+            .navbar ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                background: rgba(0, 0, 0, 0.9);
+                padding: 10px;
+                width: 180px;
+                text-align: right;
+                border-radius: 10px;
+                z-index: 1000;
+            }
+            .navbar ul.show {
+                display: flex;
+            }
+            .menu-icon {
+                display: block;
+                color: white;
+            }
+        }
+
+    @keyframes bounce {
+      from {
+        transform: translateY(0px);
+      }
+      to {
+        transform: translateY(5px);
+      }
+
+      
+      
+    }
+
+    @media screen and (max-width: 600px) {
+      #certificate {
+        width: 100%;
+        border: 1px solid #fff;
+      }
+
+      #studentName {
+        top: 39%;
+        left: 57%;
+        transform: translateX(-50%);
+        font-size: 18px;
+        text-align: center;
+      }
+
+      #studentCourse {
+        top: 57%;
+        left: 60%;
+        transform: translateX(-50%);
+        font-size: 16px;
+        text-align: center;
+      }
+
+      #studentDate {
+        top: 70%;
+        left: 60%;
+        transform: translateX(-50%);
+        font-size: 10px;
+        text-align: center;
+      }
+
+      #studentID {
+        bottom: 16%;
+        left: 42%;
+        transform: translateX(-50%);
+        font-size: 8px;
+        text-align: center;
+      }
+
+      #verifyBtn {
+        width: 80%;
+        font-size: 14px;
+      }
+
+      #inputSection input {
+        width: 80%;
+        font-size: 14px;
+      }
+
+      #descriptionText {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+  <div id="themeTipBox">
+    ☀️ Click here to change theme
+    <div class="arrow-down"></div>
+  </div>
+<body class="dark-mode">
+    <nav class="navbar"> 
+        <div class="logo">
+            <img src="lc.png" alt="Logo">
+            <strong>Talari Technologies</strong>
+        </div>
+        <ul id="nav-menu">
+            <li><a href="home.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#">Service ▾</a>
+                <div class="dropdown-content">
+                    <a href="webdesign.html">Website Design<ing/a>
+                    <a href="webdevelopment.html">Website Development</a>
+                    <a href="#">3D website designing</a>
+                    <a href="app.html">App Development</a>
+                    <a href="software.html">Softwares</a>
+		    <a href="workshop.html">Work Shops</a>
+		    <a href="services.html">Customer Support Services</a>
+		    <a href="studentprj.html">Students Projects</a>
+                </div>
+            </li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#faq" class="faq-button">JOB</a></li>
+            <li><button class="theme-toggle" id="theme-toggle">☀️</button></li>
+        </ul>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    </nav>
+
+ <img src="earth.png" class="earth" alt="Earth"> <!- Earth Image -->
+
+    <!-- Home Section -->
+<div class="stars" id="stars"></div> <!-- Star container -->
+
+
+    <div class="background">
+        <img src="https://cdn-icons-png.flaticon.com/128/7075/7075369.png" alt="UI Design">
+	<img src="https://cdn-icons-png.flaticon.com/128/11333/11333010.png" alt="API Laptop">
+        <img src="https://cdn-icons-png.flaticon.com/128/7075/7075373.png" alt="Mobile Development">
+    	<img src="https://cdn-icons-png.flaticon.com/128/1344/1344940.png" alt="Graduation Hat">
+    	<img src="https://cdn-icons-png.flaticon.com/128/2257/2257307.png" alt="Graph">
+    	<img src="https://cdn-icons-png.flaticon.com/128/2165/2165061.png" alt="Email Icon">
+    	<img src="https://cdn-icons-png.flaticon.com/128/3446/3446795.png" alt="Chart">
+    	<img src="https://cdn-icons-png.flaticon.com/128/3330/3330300.png" alt="Books">
+        <img src="https://cdn-icons-png.flaticon.com/128/2989/2989987.png" alt="Chat Icon">
+        <img src="https://cdn-icons-png.flaticon.com/128/2076/2076218.png" alt="Bubble Chat">
+        <img src="https://cdn-icons-png.flaticon.com/128/1933/1933005.png" alt="Paper Plane">
+        <img src="https://cdn-icons-png.flaticon.com/128/4795/4795897.png" alt="Profile">
+    	<img src="https://cdn-icons-png.flaticon.com/128/1693/1693746.png" alt="AI Icon">
+        <img src="https://cdn-icons-png.flaticon.com/128/1087/1087927.png" alt="Project Management">
+    	<img src="https://cdn-icons-png.flaticon.com/128/900/900961.png" alt="Artificial Intelligence">
+
+    </div>
+
+     <section>
+  <h2>Certificate Verification</h2>
+  <p>
+    Talari Technologies is committed to empowering students by offering practical, quality training across a wide range of technology courses. We help students gain valuable knowledge and hands-on skills that are essential for real-world success.Talari Technologies is a <strong style="color: #00ff99;">MSME Registered</strong> company under the Udyam scheme, offering a diverse set of services tailored to our clients' needs. Our goal is to provide efficient, affordable, and innovative solutions across multiple domains.
+    After successful completion of a course or workshop, each student is awarded a certificate with a unique Certificate ID.
+    You can verify the authenticity of your certificate by entering the Certificate ID in the field below. All certificate IDs are securely generated and unique to each student. Want to know more about our workshop? Click the button below.
+  </p>
+
+    <p> For any help or for more information u can contact us</p>
+    <div class="button-container">
+  <a href="app.html" target="_blank" class="verify-button">Workshop</a>
+  <a href="certificate.html" target="_blank" class="verify-button">Contact Us</a>
+</div>
+  </p>
+</section>
+
+
+ 
+
+
+  <main>
+<p class="aa" style="text-align: center;">Enter your Certificate ID, which we have provided in your certificate.</p>
+
+    
+    <div id="inputSection">
+      <input type="text" id="studentIdInput" placeholder="Enter Certificate ID" />
+      <br>
+    <button id="verifyBtn" onclick="playSound()">Verify Certificate</button>
+  <audio id="clickSound" src="https://www.fesliyanstudios.com/play-mp3/387" preload="auto"></audio>   
+    </div>
+
+    <div id="certificate">
+      <img id="certBackground" src="3.png" alt="Certificate Background">
+      <div class="cert-field" id="studentID"></div>
+      <div class="cert-field" id="studentName"></div>
+      <div class="cert-field" id="studentCourse"></div>
+      <div class="cert-field" id="studentDate"></div>
+    </div><br>
+
+    <div id="descriptionText"></div><br>
+ 
+  </main>
+
+<body>
+<style>
+    footer {
+      background: linear-gradient(135deg, rgba(44, 62, 80, 0.7), rgba(26, 37, 47, 1));
+      color: white;
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .footer-section {
+      flex: 1 1 300px;
+    }
+
+    .footer-section h3 {
+      color: #4CAF50;
+      border-bottom: 2px solid #7d4cdb;
+      display: inline-block;
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      margin: 10px 0;
+      transition: color 0.3s ease;
+    }
+
+    ul li a:hover {
+      color:orange;
+    }
+
+    .footer-btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 15px;
+      background-color: #7d4cdb;
+      color: white;
+      border-radius: 25px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+        font-weight: bold;
+    }
+
+    .footer-btn:hover {
+      background-color: #5a32a3;
+    }
+
+    iframe {
+      width: 100%;
+      height: 150px;
+      border: 0;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+
+    .footer-bottom {
+      margin-top: 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      padding-top: 20px;
+    }
+
+    html {
+  scroll-behavior: smooth;.help-btn {
+  display: inline-block;
+  margin: 6px 0;
+  padding: 10px 15px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: bold;
+  transition: 0.3s;
+  color: #fff;
+  background: #0073e6;
+}
+
+.help-btn i {
+  margin-right: 8px;
+}
+.help-btn:hover {
+  background: #005bb5;
+}}
+
+  </style>
+
+
+
+  
+  <!-- Footer Section -->
+  <footer>
+    <div class="footer-container">
+
+      <!-- Find Us Section -->
+        <div class="footer-section">
+        <h3><strong>Need Help Or Feedbacks</strong></h3>
+  <p>Need help? Feel free to solve your queries and share your feedbacks.</p>
+  
+  <!-- Email Support Button -->
+  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=jayawanth@mail.com&su=Support Request&body=Hello, I need help with..." target="_blank" class="help-btn">
+  Send Mail
+</a>
+
+
+    </div>
+
+      <!-- Useful Links -->
+      <div class="footer-section">
+        <h3>Useful Links</h3>
+        <ul>
+          <li><a href="cirtific1.html">Verify your Certificates</a></li>
+          <li><a href="webdesign.html">Website Design</a></li>
+          <li><a href="proj.html">Our Projects</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="home.html">Home</a></li>
+        </ul>
+      </div>
+
+      <!-- Let's Work Together -->
+      <div class="footer-section">
+        <h3>Let's Work Together</h3>
+        <p>Ready to bring your vision to life? Let's make something great together!</p>
+        <a href="about.html" class="footer-btn">Start a Project</a>
+      </div>
+
+    </div>
+
+    <!-- Bottom -->
+    <div class="footer-bottom">
+      <p style="text-align:center; font-size:14px;  padding:10px;">
+  © 2025 Talari Technologies | Udyam MSME Certificate. All rights reserved.
+      </p>
+
+    </div>
+  </footer>
+</body>
+
+  <script>
+    const verifyBtn = document.getElementById('verifyBtn');
+    const certificate = document.getElementById('certificate');
+    const descriptionText = document.getElementById('descriptionText');
+
+    verifyBtn.addEventListener('click', () => {
+      const studentId = document.getElementById('studentIdInput').value.trim();
+      if (!studentId) {
+        alert("Please enter a Certificate ID!");
+        return;
+      }
+
+      fetch(`https://script.google.com/macros/s/AKfycbxI6sSEHt5Tf38YM898jiwnHiWm40BgylWEYu0FAneDjTL9HcCtL9ukLzO5xq0wevGWbw/exec?id=${encodeURIComponent(studentId)}`)
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            document.getElementById('studentID').innerText = data.id;
+            document.getElementById('studentName').innerText = data.name;
+            document.getElementById('studentCourse').innerText = data.course;
+            document.getElementById('studentDate').innerText = "On     :  " + new Date(data.date).toDateString();
+
+            // Show certificate and message
+            certificate.style.display = 'block';
+            descriptionText.style.display = 'block';
+            descriptionText.innerText = `The certificate above verifies that ${data.name} has successfully completed the work shop of ${data.course} condected by Talari Technologies on ${new Date(data.date).toDateString()}.`;
+
+            certificate.scrollIntoView({ behavior: 'smooth' });
+          } else {
+            alert("Invalid Certificate ID!");
+            certificate.style.display = 'none';
+            descriptionText.style.display = 'none';
+          }
+        })
+        .catch(err => {
+          console.error(err);
+          alert("Error connecting to verification service.");
+        });
+    });
+
+      function toggleMenu() {
+          document.getElementById("nav-menu").classList.toggle("show");
+      }
+      
+      document.addEventListener("DOMContentLoaded", function () {
+          let themeToggleButton = document.getElementById("theme-toggle");
+      
+          function updateIcon() {
+              themeToggleButton.textContent = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
+          }
+      
+          themeToggleButton.addEventListener("click", function () {
+              document.body.classList.toggle("dark-mode");
+              document.body.classList.toggle("light-mode");
+              localStorage.setItem("theme", document.body.classList.contains("dark-mode") ? "dark" : "light");
+              updateIcon();
+          });
+      
+          if (localStorage.getItem("theme") === "light") {
+              document.body.classList.remove("dark-mode");
+              document.body.classList.add("light-mode");
+          }
+      
+          updateIcon();
+      
+      // Create random stars that blink
+      function createStars() {
+      const starsContainer = document.getElementById("stars");
+      starsContainer.innerHTML = ''; // Clear existing stars
+      
+      for (let i = 0; i < 100; i++) { // Adjust the number of stars
+      let star = document.createElement("div");
+      star.classList.add("star");
+      
+      let randomX = Math.random() * window.innerWidth;
+      let randomY = Math.random() * window.innerHeight;
+      let randomDelay = Math.random() * 3;
+      
+      star.style.left = `${randomX}px`;
+      star.style.top = `${randomY}px`;
+      star.style.animationDelay = `${randomDelay}s`;
+      
+      starsContainer.appendChild(star);
+      }
+      }
+      
+      // Run the function once the page loads
+      window.onload = createStars;
+      
+      // Update stars when the window resizes
+      window.addEventListener("resize", createStars);
+      
+      
+      });
+      
+      
+          // Automatically remove the tooltip after 7 seconds
+      setTimeout(() => {
+      const tip = document.getElementById("themeTipBox");
+      if (tip) tip.remove();
+      }, 5000);
+      
+      // Dummy theme toggle
+      function toggleTheme() {
+      alert("Theme changed! (You can replace this with real theme logic.)");
+      }
+      
+      
+      function playSound() {
+      const sound = document.getElementById("clickSound");
+      sound.currentTime = 0; // Rewind to start
+      sound.play();
+      }
+
+  </script>
+</body>
+</html>
