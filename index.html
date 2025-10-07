@@ -470,90 +470,7 @@
         }
 
 
-    @media (max-width: 768px) {
-        footer div {
-            text-align: center;
-        }
-        footer div div {
-            flex: 100%;
-            margin-bottom: 20px;
-        }
-        input, button {
-            width: 50%;
-        }
-    }
 
-/* ✅ Mobile View */
-@media (max-width: 768px) {
-    .footer-container {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .footer-section {
-        text-align: center;
-        width: 100%;
-    }
-
-    .footer-section input,
-    .footer-section button {
-        width: 95%;
-    }
-}
-
-/* General Footer Styles */
-footer {
-    background: linear-gradient(135deg, rgba(44, 62, 80, 0.4), rgba(26, 37, 47, 0.8));
-    color: white;
-    padding: 50px 20px;
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
-}
-
-/* Footer Container */
-.footer-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    width: 1400px;
-    margin: auto;
-    text-align: left;
-    height: 30vh; /* Full viewport height */
-    bottom: 0;
-
-}
-
-/* Footer Sections */
-.footer-section {
-    flex: 1;
-    min-width: 250px;
-    margin-bottom: 20px;
-}
-
-/* Company Logo */
-.footer-section img {
-    max-width: 180px;
-    filter: brightness(1.2);
-}
-
-/* Paragraphs */
-.footer-section p {
-    margin-top: 15px;
-    line-height: 1.6;
-}
-
-/* Social Media Icons */
-.social-icons a {
-    color: white;
-    font-size: 24px;
-    margin-right: 15px;
-    transition: 0.3s;
-}
-
-.social-icons a:hover {
-    color: #7d4cdb;
-}
 
     /* 🌗 Theme Tip Box */
     #themeTipBox {
@@ -752,52 +669,156 @@ footer {
         </div>
     </div>
 
-<footer style="background: linear-gradient(135deg, rgba(44, 62, 80, 0.4), rgba(26, 37, 47, 0.8)); color: white; padding: 50px 20px; text-align: center; font-family: 'Poppins', sans-serif;">
-  <div style="display: flex; flex-wrap: wrap; justify-content: space-between; max-width: 1400px; margin: auto;">
+<body>
+<style>
+    footer {
+      background: linear-gradient(135deg, rgba(44, 62, 80, 0.7), rgba(26, 37, 47, 1));
+      color: white;
+      padding: 50px 20px;
+      text-align: center;
+    }
 
-    <!-- Find Us -->
-    <div style="flex: 1; min-width: 200px; text-align: center;">
-      <h3 style="border-bottom: 3px solid #7d4cdb; display: inline-block; padding-bottom: 8px; color: green">Find Us</h3>
-      <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.5408369905434!2d-122.42122028468284!3d37.77927677975865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c001d85e3%3A0xdeb539f3b41890d2!2sTwitter%20HQ!5e0!3m2!1sen!2sus!4v1615044024743!5m2!1sen!2sus" 
-        width="100%" 
-        height="150" 
-        style="border:0; border-radius: 8px; margin-top: 10px;" 
-        allowfullscreen="" 
-        loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
+    .footer-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .footer-section {
+      flex: 1 1 300px;
+    }
+
+    .footer-section h3 {
+      color: #4CAF50;
+      border-bottom: 2px solid #7d4cdb;
+      display: inline-block;
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      margin: 10px 0;
+      transition: color 0.3s ease;
+    }
+
+    ul li a:hover {
+      color:orange;
+    }
+
+    .footer-btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 15px;
+      background-color: #7d4cdb;
+      color: white;
+      border-radius: 25px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+        font-weight: bold;
+    }
+
+    .footer-btn:hover {
+      background-color: #5a32a3;
+    }
+
+    iframe {
+      width: 100%;
+      height: 150px;
+      border: 0;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+
+    .footer-bottom {
+      margin-top: 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      padding-top: 20px;
+    }
+
+    html {
+  scroll-behavior: smooth;.help-btn {
+  display: inline-block;
+  margin: 6px 0;
+  padding: 10px 15px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: bold;
+  transition: 0.3s;
+  color: #fff;
+  background: #0073e6;
+}
+
+.help-btn i {
+  margin-right: 8px;
+}
+.help-btn:hover {
+  background: #005bb5;
+}}
+
+  </style>
+
+
+
+  
+  <!-- Footer Section -->
+  <footer>
+    <div class="footer-container">
+
+      <!-- Find Us Section -->
+        <div class="footer-section">
+        <h3><strong>Need Help Or Feedbacks</strong></h3>
+  <p>Need help? Feel free to solve your queries and share your feedbacks.</p>
+  
+  <!-- Email Support Button -->
+  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=jayawanth@mail.com&su=Support Request&body=Hello, I need help with..." target="_blank" class="help-btn">
+  Send Mail
+</a>
+
+
     </div>
 
-    <!-- Useful Links -->
-    <div style="flex: 1; min-width: 200px; text-align: center;">
-      <h3 style="border-bottom: 3px solid #7d4cdb; display: inline-block; padding-bottom: 8px; color: green">Useful Links</h3>
-      <ul style="list-style: none; padding: 0; margin-top: 15px;">
-        <li><a href="https://onecompiler.com/html/43dwtxgrf" target="_blank" style="color: white; text-decoration: none; display: block; margin-bottom: 8px;">Website Design</a></li>
-        <li><a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px;">Advertising</a></li>
-        <li><a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px;">About Us</a></li>
-        <li><a href="#" style="color: white; text-decoration: none; display: block;">Contact Us</a></li>
-      </ul>
+      <!-- Useful Links -->
+      <div class="footer-section">
+        <h3>Useful Links</h3>
+        <ul>
+          <li><a href="cirtific1.html">Verify your Certificates</a></li>
+          <li><a href="webdesign.html">Website Design</a></li>
+          <li><a href="proj.html">Our Projects</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="home.html">Home</a></li>
+        </ul>
+      </div>
+
+      <!-- Let's Work Together -->
+      <div class="footer-section">
+        <h3>Let's Work Together</h3>
+        <p>Ready to bring your vision to life? Let's make something great together!</p>
+        <a href="about.html" class="footer-btn">Start a Project</a>
+      </div>
+
     </div>
 
-    <!-- Let's Work Together -->
-    <div style="flex: 1; min-width: 200px; text-align: center;">
-      <h3 style="border-bottom: 3px solid #7d4cdb; display: inline-block; padding-bottom: 8px; color: green;">Let's Work Together</h3>
-      <p style="margin-top: 10px;">Looking to start your project? Let's turn your idea into reality.</p>
-      <a 
-        href="https://onecompiler.com/html" 
-        target="_blank" 
-        style="display: inline-block; margin-top: 10px; padding: 10px 20px; background-color: #7d4cdb; color: white; border-radius: 8px; text-decoration: none;">
-        Contact Us
-      </a>
+    <!-- Bottom -->
+    <div class="footer-bottom">
+      <p style="text-align:center; font-size:14px;  padding:10px;">
+  © 2025 Talari Technologies | Udyam MSME Certificate. All rights reserved.
+      </p>
+
     </div>
-
-  </div>
-
-  <div style="margin-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.2); padding-top: 20px;">
-    <p>&copy; Digiworld Pvt Ltd. All Rights Reserved.</p>
-  </div>
-</footer>
+  </footer>
+</body>
 
 
 
@@ -882,4 +903,5 @@ window.addEventListener("resize", createStars);
     </script>
 </body>
 </html>
+
 
