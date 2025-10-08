@@ -25,6 +25,7 @@
             background-color: #ffffff;
             color: #121212;
         }
+
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -46,7 +47,7 @@
         .navbar ul {
             list-style: none;
             display: flex;
-            gap: 40px;
+            gap: 20px;
             margin-left: auto;
             align-items: center;
         }
@@ -77,7 +78,7 @@
             display: block;
             padding: 10px;
             color: white;
-             text-align: left;
+            text-align: left; 
         }
         .dropdown-content a:hover {
             background: rgba(255, 255, 255, 0.1);
@@ -93,9 +94,9 @@
             font-weight: bold;
             transition: background 0.3s ease-in-out;
         }
-        /*.faq-button:hover {
-            background: #8bca84;!-->
-        }*/
+        .faq-button:hover {
+            background: #8bca84;
+        }
         .theme-toggle {
             cursor: pointer;
             background: none;
@@ -113,51 +114,8 @@
             font-size: 24px;
             cursor: pointer;
             display: none;
+            color: green !important;
         }
-
-.menu-icon {
-    color: green !important;
-}
-        .navbar ul li button.theme-toggle {
-    background: transparent;
-    color: white;
-    font-weight: bold;
-    padding: 8px 15px;
-    border-radius: 20px;
-    width: 100%;
-    text-align: center;
-}
-
-.mobile-break {
-  display: inline;
-}
-
-@media (max-width: 600px) {
-  .mobile-break {
-    display: block;
-  }
-}
-
-
-.services-list {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.services-list ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  text-align: left;
-}
-
-.services-list li {
-  margin-bottom: 10px;
-  font-size: 16px;
-}
-
-
 
 
         .container {
@@ -172,14 +130,17 @@
             width: 80%;
             max-width: 800px;
             padding: 30px;
-            background: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.9);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             border-radius: 15px;
             text-align: center;
-           
+            transform: rotateX(15deg) translateY(20px);
             transition: transform 0.5s ease-in-out, box-shadow 0.5s;
         }
-        
+        .section:hover {
+            transform: rotateX(0deg) translateY(0px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
         
         .dark-mode {
             background-color: #121212;
@@ -243,6 +204,11 @@
             }
         }
 
+        footer {
+  position: relative;
+  z-index: 5;
+}
+
     /* Earth at the Bottom */
     .earth {
       position: fixed;
@@ -269,7 +235,7 @@
 	    text-align: center;
         }
 
-.containers {
+.containers{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -281,7 +247,7 @@
 
 /* Image Containers */
 .image-containers img {
-    max-width: 100%;
+    max-width: 80%;
     height: auto;
     border-radius: 10px;
 }
@@ -411,6 +377,48 @@
     vertical-align: middle;
 }
 
+  .choose-section {
+    max-width: 1000px;
+    margin: auto;
+    padding: 40px 20px;
+  }
+  .choose-section h2 {
+    text-align: center;
+    color: #00b050;
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+  .choose-section h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  .choose-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .choose-container ul {
+    list-style: none;
+    padding: 0;
+  }
+  .choose-container li {
+    margin-bottom: 12px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+  }
+  .choose-container li::before {
+    content: "✔";
+    color: #9b59b6;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  @media (max-width: 768px) {
+    .choose-container {
+      grid-template-columns: 1fr;
+    }
+  }
+
 
         /* Background Grid */
   .background {
@@ -441,8 +449,6 @@
             transform: scale(1.1);
         }
 
-        
-
         /* Foreground Content */
         .content {
             position: relative;
@@ -469,10 +475,130 @@
             }
         }
 
+        .cont {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 50px;
+            padding: 50px 20px;
+            perspective: 1000px;
+            flex-wrap: wrap;
+        }
+	    .sect p {
+    		line-height: 1.6;
+    		letter-spacing: 0.3px;
+    		word-spacing: 1.5px; /* Slightly more space between words/sentences */
+		}
+        .sect {
+            width: 40%;
+            max-width: 400px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
+            text-align: center;
+            transform: rotateX(5deg) translateY(5px);
+            transition: transform 0.5s ease-in-out, box-shadow 0.5s;
+	    
+        }
+        .sect:hover {
+            transform: rotateX(0deg) translateY(0px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+        .image-cont {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .image-cont img {
+            width: 120px;
+            height: auto;
+        }
+        @media (max-width: 768px) {
+            .cont {
+                flex-direction: column;
+                align-items: center;
+            }
+            .sect {
+                width: 80%;
+                max-width: none;
+            }
+        }
+.right {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    justify-content: space-between; /* Space between text & image */
+    padding: 20px;
+}
+
+.right h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+    text-align: center;
+    color: #45a049; /* Default green color for light mode */
+}
+
+.text {
+    flex: 1;
+    text-align: left;
+    font-size: 18px;
+    line-height: 1.6; /* Adds space between lines */
+}
+
+.image {
+    margin-left: 20px;
+}
+
+img {
+    max-width: 450px; /* Adjust image size */
+    height: auto;
+}
+
+/* ✅ Mobile Responsive Design */
+@media (max-width: 768px) {
+    .right { 
+        flex-direction: column; /* Stack elements on smaller screens */
+        text-align: center; /* Center text */
+    }
+
+    .image {
+        margin-left: 0; /* Remove margin for better alignment */
+        margin-top: 10px; /* Add space between text & image */
+    }
+}
+
+
+.services-list {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.services-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.services-list li {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
 
 
 
-    /* 🌗 Theme Tip Box */
+
+.app-heading {
+    text-align: center;
+    font-size: 32px; /* You can adjust the size as needed */
+    color: #45a049;  
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
     #themeTipBox {
       position: fixed;
       top: 80px;
@@ -525,47 +651,41 @@
       }
 
       
-
+      
     }
-
-
     </style>
 </head>
-
-  <!-- 🌗 Theme Tip Box -->
   <div id="themeTipBox">
     ☀️ Click here to change theme
     <div class="arrow-down"></div>
   </div>
-
 <body class="dark-mode">
     <nav class="navbar"> 
         <div class="logo">
-            <img src="loga.png" alt="Logo">
+            <img src="lc.png" alt="Logo">
             <strong>Talari Technologies</strong>
         </div>
-<ul id="nav-menu">
-  <li><a href="home.html">Home</a></li>
-  <li class="dropdown">
-    <a href="#">Service ▾</a>
-    <div class="dropdown-content">
-      <a href="webdesign.html">Website Designing</a>
-      <a href="webdevelopment.html">Website Development</a>
-      <a href="3d.html">3D Website Designing</a>
-      <a href="app.html">App Development</a>
-      <a href="software.html">Softwares</a>
-      <a href="workshop.html">Work Shops</a>
-      <a href="services.html">Customer Support Services</a>
-      <a href="studentprj.html">Students Projects</a>
-    </div>
-  </li>
-  <li><a href="about.html">About</a></li>
-  <li><a href="#">Contact</a></li>
-  <li><a href="#faq" class="faq-button">JOB</a></li>
-  <li><button class="theme-toggle" id="theme-toggle">☀️</button></li>
-</ul>
-<div class="menu-icon" onclick="toggleMenu()">☰</div>
-
+        <ul id="nav-menu">
+            <li><a href="home.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#">Service ▾</a>
+                <div class="dropdown-content">
+                    <a href="webdesign.html">Website Design<ing/a>
+                    <a href="webdevelopment.html">Website Development</a>
+                    <a href="3d.html">3D website designing</a>
+                    <a href="app.html">App Development</a>
+                    <a href="software.html">Softwares</a>
+		    <a href="workshop.html">Work Shops</a>
+		    <a href="services.html">Customer Support Services</a>
+		    <a href="#">Students Projects</a>
+                </div>
+            </li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#faq" class="faq-button">JOB</a></li>
+            <li><button class="theme-toggle" id="theme-toggle">☀️</button></li>
+        </ul>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
     </nav>
 
  <img src="earth.png" class="earth" alt="Earth"> <!- Earth Image -->
@@ -592,7 +712,10 @@
     	<img src="https://cdn-icons-png.flaticon.com/128/900/900961.png" alt="Artificial Intelligence">
 
     </div>
-<div class="containers">
+
+    </div>
+
+  <div class="containers">
         <div class="image-containers">
             <img src="team.png" alt="Creative Collaboration">
         </div>
@@ -608,7 +731,6 @@
         </div>
     </div>
     </div>
-
   <div class="container">
     <div class="section">
       <h2>Welcome to Creative World</h2>
@@ -639,10 +761,8 @@
 	<p>Come lets grow growtogether.</p>
         <p>Smart team that transform your ideas into reality.</p>
     </div>
-</div>
+</div> 
 
-
- 
     <div class="containers">
         <div class="text-containers">
             <h2>Our Team</h2>
@@ -669,7 +789,76 @@
         </div>
     </div>
 
-<body>
+
+
+
+
+<section class="choose-section">
+  <h2>Why to Choose Us</h2>
+
+  <div class="choose-container">
+    <ul>
+  <li>Custom, Responsive Websites Tailored to Your Brand and Businesses</li>
+  <li>Support for HTML, CSS, JavaScript, PHP, Python ,React& More</li>
+  <li>SEO-Optimized Design for Better Online Visibility</li>
+  <li>E-Commerce, Portfolio, and Business Website Solutions</li>
+</ul>
+<ul>
+  <li>Fast Delivery with Competitive Pricing</li>
+  <li>Complete Website Management & Maintenance Support</li>
+  <li>Scalable Solutions for Businesses & Institutions</li>
+  <li>Trusted by Clients Across India</li>
+</ul>
+
+  </div>
+</section>
+  
+<style>
+  .image-containers {
+    position: relative;
+    max-width: 100%;
+    height: auto;
+  }
+
+  img[usemap] {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+  }
+
+  area {
+    cursor: pointer;
+  }
+
+  img[usemap]:hover {
+    filter: brightness(1.05);
+    transition: 0.3s;
+  }
+
+
+@media (max-width: 768px) { .image-containers { padding: 20px 10px; } img[usemap] { border-radius: 8px; } } @media (max-width: 480px) { .image-containers { padding: 15px 5px; } } </style>
+
+</style>
+
+<!-- Interactive Image Map -->
+<div class="image-conta">
+  <img src="temp.png" alt="Creative Collaboration" usemap="#teammap" width="1074" height="692">
+  <map name="teammap">
+    <area shape="circle" coords="310,168,68" href="web-development.html" alt="Web Development">
+    <area shape="circle" coords="533,110,70" href="web-designing.html" alt="Web Designing">
+    <area shape="circle" coords="765,166,68" href="app-development.html" alt="App Development">
+    <area shape="circle" coords="861,366,68" href="software-solutions.html" alt="Software Solutions">
+    <area shape="circle" coords="695,492,68" href="call-mail-support.html" alt="Call & Mail Support">
+    <area shape="circle" coords="535,558,68" href="student-project.html" alt="Student Project">
+    <area shape="circle" coords="380,491,68" href="certificate-id.html" alt="Certificate & ID">
+    <area shape="circle" coords="210,368,68" href="workshops.html" alt="Workshops">
+    <area shape="circle" coords="537,346,85" href="index.html" alt="Home (Logo)">
+  </map>
+</div>
+
+
+
 <style>
     footer {
       background: linear-gradient(135deg, rgba(44, 62, 80, 0.7), rgba(26, 37, 47, 1));
@@ -818,90 +1007,95 @@
 
     </div>
   </footer>
-</body>
 
 
 
 
 
-    <script>
-        function toggleMenu() {
-            document.getElementById("nav-menu").classList.toggle("show");
-        }
-
-        document.addEventListener("DOMContentLoaded", function () {
-            let themeToggleButton = document.getElementById("theme-toggle");
-
-            function updateIcon() {
-                themeToggleButton.textContent = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
-            }
-
-            themeToggleButton.addEventListener("click", function () {
-                document.body.classList.toggle("dark-mode");
-                document.body.classList.toggle("light-mode");
-                localStorage.setItem("theme", document.body.classList.contains("dark-mode") ? "dark" : "light");
-                updateIcon();
-            });
-
-            if (localStorage.getItem("theme") === "light") {
-                document.body.classList.remove("dark-mode");
-                document.body.classList.add("light-mode");
-            }
-
-            updateIcon();
-
-// Create random stars that blink
-function createStars() {
-    const starsContainer = document.getElementById("stars");
-    starsContainer.innerHTML = ''; // Clear existing stars
-
-    for (let i = 0; i < 100; i++) { // Adjust the number of stars
-        let star = document.createElement("div");
-        star.classList.add("star");
-
-        let randomX = Math.random() * window.innerWidth;
-        let randomY = Math.random() * window.innerHeight;
-        let randomDelay = Math.random() * 3;
-
-        star.style.left = `${randomX}px`;
-        star.style.top = `${randomY}px`;
-        star.style.animationDelay = `${randomDelay}s`;
-
-        starsContainer.appendChild(star);
-    }
-}
-
-// Run the function once the page loads
-window.onload = createStars;
-
-// Update stars when the window resizes
-window.addEventListener("resize", createStars);
 
 
-        });
 
-    // Automatically remove the tooltip after 7 seconds
-    setTimeout(() => {
+<script>
+      function toggleMenu() {
+          document.getElementById("nav-menu").classList.toggle("show");
+      }
+      
+      document.addEventListener("DOMContentLoaded", function () {
+          let themeToggleButton = document.getElementById("theme-toggle");
+      
+          function updateIcon() {
+              themeToggleButton.textContent = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
+          }
+      
+          themeToggleButton.addEventListener("click", function () {
+              document.body.classList.toggle("dark-mode");
+              document.body.classList.toggle("light-mode");
+              localStorage.setItem("theme", document.body.classList.contains("dark-mode") ? "dark" : "light");
+              updateIcon();
+          });
+      
+          if (localStorage.getItem("theme") === "light") {
+              document.body.classList.remove("dark-mode");
+              document.body.classList.add("light-mode");
+          }
+      
+          updateIcon();
+      
+      // Create random stars that blink
+      function createStars() {
+      const starsContainer = document.getElementById("stars");
+      starsContainer.innerHTML = ''; // Clear existing stars
+      
+      for (let i = 0; i < 100; i++) { // Adjust the number of stars
+      let star = document.createElement("div");
+      star.classList.add("star");
+      
+      let randomX = Math.random() * window.innerWidth;
+      let randomY = Math.random() * window.innerHeight;
+      let randomDelay = Math.random() * 3;
+      
+      star.style.left = `${randomX}px`;
+      star.style.top = `${randomY}px`;
+      star.style.animationDelay = `${randomDelay}s`;
+      
+      starsContainer.appendChild(star);
+      }
+      }
+      
+      // Run the function once the page loads
+      window.onload = createStars;
+      
+      // Update stars when the window resizes
+      window.addEventListener("resize", createStars);
+      
+      
+      });
+      
+      
+          // Automatically remove the tooltip after 7 seconds
+      setTimeout(() => {
       const tip = document.getElementById("themeTipBox");
       if (tip) tip.remove();
-    }, 7000);
-
-    // Dummy theme toggle
-    function toggleTheme() {
+      }, 5000);
+      
+      // Dummy theme toggle
+      function toggleTheme() {
       alert("Theme changed! (You can replace this with real theme logic.)");
-    }
-    // Automatically remove the tooltip after 7 seconds
-    setTimeout(() => {
-      const tip = document.getElementById("themeTipBox");
-      if (tip) tip.remove();
-    }, 5000);
-
-    // Dummy theme toggle
-    function toggleTheme() {
-      alert("Theme changed! (You can replace this with real theme logic.)");
-    }
+      }
+      
+      
+      function playSound() {
+      const sound = document.getElementById("clickSound");
+      sound.currentTime = 0; // Rewind to start
+      sound.play();
+      }
+    
     </script>
-</body>
+<script src="https://cdn.jsdelivr.net/npm/image-map-resizer@1.0.10/js/imageMapResizer.min.js"></script>
+<script>
+  window.onload = function () {
+    imageMapResize();
+  };
+</script>
+
 </html>
-
-
