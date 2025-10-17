@@ -109,7 +109,20 @@
         .faq-button:hover {
             background: #8bca84;
         }
-        .theme-toggle {
+		
+		.faqa-button {
+    background: linear-gradient(90deg, #7e22ce, #db2777); /* deep purple → dark pink */
+    color: #e879f9; /* bright neon purple-pink */
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+.faqa-button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(90deg, #581c87, #c026d3);
+}
+		.theme-toggle {
             cursor: pointer;
             background: none;
             border: none;
@@ -680,6 +693,7 @@ footer {
             <li><a href="about.html">About</a></li>
 			<li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=jayawanth@mail.com&su=Support Request&body=Hello, I need help with..."target="_blank">Contact</a></li>
             <li><a href="job.html" class="faq-button">JOB</a></li>
+			<li><a href="Digital Profiles.html" class="faqa-button">Digi Profiles</a></li>
             <li><button class="theme-toggle" id="theme-toggle">☀️</button></li>
         </ul>
         <div class="menu-icon" onclick="toggleMenu()">☰</div>
@@ -1193,4 +1207,5 @@ window.addEventListener("resize", createStars);
     </script>
 </body>
 </html>
+
 
