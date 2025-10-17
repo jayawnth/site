@@ -37,15 +37,27 @@
             position: relative;
             z-index: 3;
         }
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-        .logo img {
-            width: 60px;
-            height: 60px;
-            margin-right: 10px;
-        }
+       .logoo-container {
+  display: flex;
+  align-items: center;
+  
+}
+
+.logoo-img {
+  height: 70px; /* adjust size as needed */
+  margin-right: -9px;
+}
+
+.logoo-text {
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+  font-weight: 60;
+  transform: translateY(5%); 
+}
+
+.linee1, .linee2 {
+  display: block;
+}
         .navbar ul {
             list-style: none;
             display: flex;
@@ -99,6 +111,19 @@
         .faq-button:hover {
             background: #8bca84;
         }
+                .faqa-button {
+    background: linear-gradient(90deg, #7e22ce, #db2777); /* deep purple → dark pink */
+    color: #e879f9; /* bright neon purple-pink */
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+.faqa-button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(90deg, #581c87, #c026d3);
+}
+
         .theme-toggle {
             cursor: pointer;
             background: none;
@@ -716,6 +741,48 @@ footer {
       
     }
 
+
+    /* CSS */
+.logo-container {
+  display: flex;
+  align-items: center;       /* keep image & text on same horizontal line */
+  gap: 6px;                  /* small gap between image and text */
+  /* optional: width / margin to position on page */
+  /* margin: 20px; */
+}
+
+.logo-img {
+  height: 300px;              /* adjust as needed */
+  width: auto;
+  display: block;
+    margin-right: -52px;/* remove negative margin; use gap instead */
+}
+
+.logo-text {
+    font-family: "Poppins", sans-serif;
+  font-size: 35px;         /* increase text size */
+  font-weight: 750;        /* make it bold */
+  letter-spacing: 4px;     /* spreads letters for wider look */
+  transform: scaleX(1.2);      /* change to #f5b400 for gold */
+  line-height: 1;            /* tight stack like your example */
+  transform: translateY(4%); /* small downward nudge (tweak % if needed) */
+  display: flex;
+  flex-direction: column;    /* stack line1 and line2 vertically */
+  justify-content: center; 
+  margin-left: -10;  /* vertical center relative to image */
+}
+
+/* If you want slightly different sizes for each line: */
+.logo-text .line1 { font-size: 28px; }
+.logo-text .line2 { font-size: 28px; }
+
+/* Responsive tweak: smaller on mobile */
+@media (max-width: 480px) {
+  .logo-img { height: 200px; }
+  .logo-text { font-size: 18px; transform: translateY(3%);text-align: left; }
+}
+
+
     </style>
 </head>
 
@@ -726,12 +793,15 @@ footer {
 
 <body class="dark-mode">
     <nav class="navbar"> 
-        <div class="logo">
-            <img src="loga.png" alt="Logo">
-            <strong>Talari Technologies</strong>
-        </div>
+        <div class="logoo-container">
+  <img src="logaa.png" alt="Logo" class="logoo-img">
+  <div class="logoo-text">
+    <span class="linee1">alari</span>
+    <span class="linee2">echnologies</span>
+  </div>
+</div>
         <ul id="nav-menu">
-            <li><a href="home.html">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li class="dropdown">
                 <a href="#">Service ▾</a>
 		<div class="dropdown-content">
@@ -748,8 +818,9 @@ footer {
                 </div>
             </li>
             <li><a href="about.html">About</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#faq" class="faq-button">JOB</a></li>
+            <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=jayawanth@mail.com&su=Support Request&body=Hello, I need help with..."target="_blank">Contact</a></li>
+            <li><a href="job.html" class="faq-button">JOB</a></li>
+            <li><a href="Digital Profiles.html" class="faqa-button">Digi Profiles</a></li>
             <li><button class="theme-toggle" id="theme-toggle">☀️</button></li>
         </ul>
         <div class="menu-icon" onclick="toggleMenu()">☰</div>
@@ -783,9 +854,15 @@ footer {
     </div>
 
     <div class="containers">
-        <div class="image-containers">
-            <img src="team.png" alt="Creative Collaboration">
-        </div>
+<!-- HTML -->
+<div class="logo-container">
+  <img src="logaa.png" alt="Logo" class="logo-img">
+  <div class="logo-text">
+    <span class="line1">alari</span>
+    <span class="line2">echnologies</span>
+  </div>
+</div>
+
         <div class="text-containers">
             <h2>About Talari Technologies</h2>
             <p>At Talari Technologies, we are dedicated to delivering innovative software solutions and digital services that help businesses grow and succeed. Along with offering professional software, website, app development and Customer Support Services (Chat support & Call support) we also support students by conducting workshops, guiding academic projects, and providing certified training. We assist students with their minor and major projects by designing them according to their requirements and offering continuous guidance.</p>
@@ -838,12 +915,12 @@ footer {
 
 <div class="right">
     <div class="text">
-      <h2>Hloo</h2>
+      <h2>hloo</h2>
         <p>we are committed to delivering digital solutions that drive growth for businesses and learning opportunities for students. Our expertise spans software, website, and app development, along with management and maintenance services to ensure your solutions run smoothly at all times. We also provide customer support services, offering inbound and outbound calls, live chat, email, and ticket management tailored to each client’s requirements. Beyond business solutions, we empower students through workshops, certified training, and project guidance, bridging the gap between academic knowledge and real-world applications. With a focus on quality, reliability, and long-term support, we work as a trusted partner to help you achieve your goals.</p>
         <p>Our aim is to make learning practical, simple, and impactful, ensuring students gain the skills and confidence needed for future success.</p>
     </div>
     <div class="image">
-        <img src="logaa.png" alt="Sample Image">
+        <img src="team.png" alt="Sample Image">
     </div>
 </div>
 
@@ -1040,16 +1117,17 @@ footer {
         <ul>
           <li><a href="cirtific1.html">Verify your Certificates</a></li>
           <li><a href="webdesign.html">Website Design</a></li>
+          <li><a href="Digital Profiles.html">Digital Profiles</a></li>
           <li><a href="proj.html">Our Projects</a></li>
           <li><a href="about.html">About Us</a></li>
-          <li><a href="home.html">Home</a></li>
+          <li><a href="index.html">Home</a></li>
         </ul>
       </div>
 
       <!-- Let's Work Together -->
       <div class="footer-section">
         <h3>Let's Work Together</h3>
-        <p>Ready to bring your vision to life? Let's make something great together!</p>
+        <p>Ready to bring your vision to life? Let's make something great together</p>
         <a href="about.html" class="footer-btn">Start a Project</a>
       </div>
 
@@ -1140,4 +1218,3 @@ window.addEventListener("resize", createStars);
     </script>
 </body>
 </html>
-
