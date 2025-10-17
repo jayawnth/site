@@ -607,6 +607,37 @@ footer {
     text-transform: capitalize;
 }
 
+
+
+
+/* Logo layout */
+.logo-container {
+  display: flex;
+  align-items: center; /* vertically center image and text */
+  gap: 0px;
+}
+
+.logo-img {
+  height: 70px;
+  margin-left: 38px;
+}
+
+.logo-text {
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+  text-align: left;
+  font-weight: 600;
+  transform: translateY(5%);
+ 
+}
+
+.line1, .line2 {
+  display: block;
+}
+
+
+
+
     #themeTipBox {
       position: fixed;
       top: 80px;
@@ -749,8 +780,14 @@ footer {
       <!-- Front -->
       <div class="cube-face face-front">
         <div>
-          <div class="avatar-circle"><img src="logaa.png"></div>
-          <div class="cube-name">Talari Technologies</div>
+<div class="logo-container"> 
+  <img src="logaa.png" alt="Logo" class="logo-img">
+  <div class="logo-text">
+    <span class="line1">alari</span>
+    <span class="line2">echnologies</span>
+  </div>
+</div>
+
           <div class="tagline">Everything You Need, All in One Place.</div>
         </div>
       </div>
