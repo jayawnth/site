@@ -772,9 +772,24 @@ footer {
   margin-left: -10;  /* vertical center relative to image */
 }
 
-/* If you want slightly different sizes for each line: */
-.logo-text .line1 { font-size: 28px; }
-.logo-text .line2 { font-size: 28px; }
+@media (max-width: 480px) {
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-img {
+    height: 200px;
+    margin-right: -36px; /* 👈 small space between image and text */
+  }
+
+  .logo-text {
+    font-size: 18px;
+    transform: translateY(3%);
+    text-align: left;
+  }
+}
+
 
 /* Responsive tweak: smaller on mobile */
 @media (max-width: 480px) {
@@ -1218,3 +1233,4 @@ window.addEventListener("resize", createStars);
     </script>
 </body>
 </html>
+
