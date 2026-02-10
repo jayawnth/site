@@ -1152,6 +1152,8 @@ footer {
 </section>
 
 <script>
+document.addEventListener("DOMContentLoaded", function () {
+
   let slideIndex = 0;
   const slides = document.querySelectorAll(".slide");
   const dots = document.querySelectorAll(".dot");
@@ -1173,10 +1175,18 @@ footer {
     showSlide(n);
   }
 
+  // Make functions available to HTML onclick
+  window.changeSlide = changeSlide;
+  window.currentSlide = currentSlide;
+
+  // Auto slide
   setInterval(() => {
     showSlide(slideIndex + 1);
   }, 4000);
+
+});
 </script>
+
 
   <script>
     const form = document.getElementById("customAppForm");
@@ -1437,6 +1447,7 @@ window.addEventListener("resize", createStars);
     </script>
 </body>
 </html>
+
 
 
 
