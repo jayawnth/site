@@ -299,6 +299,21 @@
     color: #45a049; /* Default green color for light mode */
 }
 
+    .faqa-button {
+    background: linear-gradient(90deg, #7e22ce, #db2777); /* deep purple → dark pink */
+    color: #e879f9; /* bright neon purple-pink */
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+.faqa-button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(90deg, #581c87, #c026d3);
+}
+
+
+
 /* Paragraph Text */
 .text-containers p {
     font-size: 18px;
@@ -562,6 +577,7 @@
   <li><a href="about.html">About</a></li>
   <li><a href="#">Contact</a></li>
   <li><a href="#faq" class="faq-button">JOB</a></li>
+  <li><a href="Digital Profiles.html" class="faqa-button">Digi Profiles</a></li>
   <li><button class="theme-toggle" id="theme-toggle">☀️</button></li>
 </ul>
 <div class="menu-icon" onclick="toggleMenu()">☰</div>
@@ -902,5 +918,6 @@ window.addEventListener("resize", createStars);
     </script>
 </body>
 </html>
+
 
 
