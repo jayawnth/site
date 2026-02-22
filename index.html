@@ -443,6 +443,30 @@
     }
   }
 
+.image-containers {
+    position: relative;
+    max-width: 100%;
+    height: auto;
+  }
+
+  img[usemap] {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+  }
+
+  area {
+    cursor: pointer;
+  }
+
+  img[usemap]:hover {
+    filter: brightness(1.05);
+    transition: 0.3s;
+  }
+
+
+@media (max-width: 768px) { .image-containers { padding: 20px 10px; } img[usemap] { border-radius: 8px; } } @media (max-width: 480px) { .image-containers { padding: 15px 5px; } } </style>
 
         /* Background Grid */
   .background {
@@ -820,9 +844,6 @@ img {
     </div>
 
 
-
-
-
 <section class="choose-section">
   <h2>Why to Choose Us</h2>
 
@@ -843,34 +864,6 @@ img {
   </div>
 </section>
   
-<style>
-  .image-containers {
-    position: relative;
-    max-width: 100%;
-    height: auto;
-  }
-
-  img[usemap] {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 10px;
-  }
-
-  area {
-    cursor: pointer;
-  }
-
-  img[usemap]:hover {
-    filter: brightness(1.05);
-    transition: 0.3s;
-  }
-
-
-@media (max-width: 768px) { .image-containers { padding: 20px 10px; } img[usemap] { border-radius: 8px; } } @media (max-width: 480px) { .image-containers { padding: 15px 5px; } } </style>
-
-</style>
-
 <!-- Interactive Image Map -->
 <div class="image-conta">
 	<p style="text-align:center;font-size:20px">
@@ -1132,6 +1125,7 @@ img {
 </script>
 
 </html>
+
 
 
 
