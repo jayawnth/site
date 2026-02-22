@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Talari Technologies</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        color: white;
+        text-align: center;
+    }
+
+    h1 {
+        margin-bottom: 10px;
+        font-size: 36px;
+    }
+
+    p {
+        margin-bottom: 30px;
+        opacity: 0.85;
+    }
+
+    /* Loader */
+    .loader {
+        width: 60px;
+        height: 60px;
+        border: 6px solid rgba(255,255,255,0.2);
+        border-top: 6px solid white;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-bottom: 30px;
+    }
+
+    @keyframes spin {
+        100% { transform: rotate(360deg); }
+    }
+
+    /* Back Button */
+    .back-btn {
+        padding: 12px 24px;
+        background: white;
+        color: #203a43;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    .back-btn:hover {
+        background: #00d4ff;
+        color: black;
+        transform: scale(1.05);
+    }
+</style>
+</head>
+
+<body>
+
+<h1>🚀 Service Launching Soon</h1>
+<p>Our Digital Profile services will be available shortly.</p>
+
+<div class="loader"></div>
+
+<button class="back-btn" onclick="goBack()">
+Click here to go back
+</button>
+
+<script>
+function goBack() {
+    window.history.back();  
+    // window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>
