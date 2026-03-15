@@ -697,11 +697,39 @@ img {
       to {
         transform: translateY(5px);
       }
-
-      
-      
+ 
     }
-    </style>
+
+	.image-conta{
+    width:100%;
+    max-width:1100px;
+    margin:auto;
+    text-align:center;
+    padding:20px;
+}
+
+.image-conta p{
+    font-size:20px;
+    color:#333;
+    line-height:1.6;
+    max-width:850px;
+    margin:auto;
+}
+
+.image-conta img{
+    width:100%;
+    max-width:1074px;
+    height:auto;
+    border-radius:10px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.15);
+    transition:transform 0.4s ease;
+}
+
+/* hover effect */
+.image-conta img:hover{
+    transform:scale(1.02);
+}
+	</style>
 </head>
   <div id="themeTipBox">
     ☀️ Click here to change theme
@@ -866,7 +894,7 @@ img {
   
 <!-- Interactive Image Map -->
 <div class="image-conta">
-	<p style="text-align:center;font-size:20px">
+	<p>
   We help people by providing services like. On PC, you can click the service field in the image — it will redirect you to that page.
 </p><br>
   <img src="temp.png" alt="Creative Collaboration" usemap="#teammap" width="1074" height="692">
